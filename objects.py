@@ -122,14 +122,14 @@ class Object:
         else:
             return False  # Il manque des points -> Necessite une interpolation
 
-    # Returns a list of the indices representing the frames on which the Object isn't recognized
+    # Returns a list of the indices representing the frames on which the object isn't recognized
     def holes(self):
-        liste = self.coor_suivi.keys()
+        liste = list(self.coor_suivi.keys())
         fin = max(liste)
         res = []
         i = 0
         j = 0
-        while i <= fin and j < len(liste):
+        while i <= fin and j < len(liste)-1:
             if i == liste[j]:
                 i += 1
                 j += 1
