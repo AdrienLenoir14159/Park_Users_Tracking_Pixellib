@@ -3,20 +3,14 @@ import random as rd
 import cv2
 import numpy as np
 
-
 import objects
 
-# Durées en milisecondes
-UN = 1000
-TROIS = 3000
-CINQ = 5000
-
-# Constantes a regler
-PERIM = 31 # nombre de pixels tel qu'un Object plus proche que cela peut-etre considere comme la suite d'une trace.
+# Constants to adjust
+PERIM = 31 # Distance in pixels, for a box to be considered as potentially representing a same Object
 PERIM_MULT = 1.15
-FORWARD_UNIT = 11 # Environs le nombre de pixels avances en une frame
+FORWARD_UNIT = 11 # AApproximately the distance covered between two frames by an average walker
 
-### Segmentation avec extraction et sauvegarde de chaque objet
+### Segmentation with extraction and saving of every Object
 seg_img = instance_segmentation(infer_speed="average")
 seg_img.load_model("mask_rcnn_coco.h5")
 
@@ -27,7 +21,7 @@ frame_count = 0
 while True:
     ok, frame_UN = capture.read()
     if ok != True:
-        print("\nOn sort !\n")
+        print("\nFin de la première boucle (Attribution) !\n")
         capture.release()
         cv2.destroyAllWindows()
         break
