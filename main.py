@@ -40,12 +40,12 @@ while True:
     masks, rendu = seg_img.segmentImage("image_travail.jpg",
                                         show_bboxes=True,
                                         segment_target_classes=target_type,
-                                        output_image_name="DJI_0021_RECOG.JPG"
+                                        output_image_name="image_travail_2.jpg"
                                         )
 
     box_coor = masks['rois']
 
-    frame_DEUX = cv2.imread("DJI_0021_RECOG.JPG")
+    frame_DEUX = cv2.imread("image_travail_2.jpg")
     cv2.namedWindow("apercu_travail", cv2.WINDOW_NORMAL)
     cv2.imshow("apercu_travail", frame_DEUX)
     cv2.waitKey(3000)
